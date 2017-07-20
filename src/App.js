@@ -88,7 +88,7 @@ class BeerList extends Component {
     return (
       <div className="container">
         <div className="page-header">
-          <h2>Beer List</h2>
+          <h2>Griffin's Beers</h2>
         </div>
         <div className="panel panel-default">
           <div className="panel-heading">
