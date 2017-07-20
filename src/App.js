@@ -11,7 +11,7 @@ class BeerList extends Component {
     this.state = {}
   }
 
-  componentWillMount() {
+  componentWillMount = () => {
     // Set api url as variable
     const url = "http://beer.fluentcloud.com/v1/beer/"
     // Establish connection to api
@@ -99,7 +99,7 @@ class BeerList extends Component {
               <label htmlFor="beerName">Beer:</label>
               <input ref='beer_name' type='text' className="form-control" value={this.state.beer_name} />
               <label htmlFor="beerLikes">Likes:</label>
-              <input ref='beer_likes' type='text' className="form-control" value={this.state.beer_likes} />
+              <input ref='beer_likes' type='number' className="form-control" value={this.state.beer_likes} />
               
               <button type="button" className="btn btn-primary" onClick={this.addBeer.bind(this)}>Add Beer</button>
             </form>
