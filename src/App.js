@@ -13,7 +13,7 @@ class BeerList extends Component {
 
   componentWillMount() {
     // Set api url as variable
-    var url = "http://beer.fluentcloud.com/v1/beer/"
+    const url = "http://beer.fluentcloud.com/v1/beer/"
     // Establish connection to api
     axios.get(url).then((response) => {
       this.setState({
@@ -23,8 +23,8 @@ class BeerList extends Component {
   }
 
   addBeer = (e) => {
-    var beer_name = this.refs.beer_name.value
-    var beer_likes = this.refs.beer_likes.value
+    const beer_name = this.refs.beer_name.value
+    const beer_likes = this.refs.beer_likes.value
     // Prevent default entry
     if (beer_name && beer_likes) {
       axios.post("http://beer.fluentcloud.com/v1/beer/", { name: beer_name, likes : beer_likes })
@@ -59,7 +59,7 @@ class BeerList extends Component {
     }
     axios.put(`http://beer.fluentcloud.com/v1/beer/${id}`, { likes })
     .then((response) => {
-      // Update state after thumbs up
+      // Update state after thumbs down
       this.componentWillMount()
     })
   }
@@ -67,7 +67,7 @@ class BeerList extends Component {
   removeBeer = (id) => {
     axios.delete(`http://beer.fluentcloud.com/v1/beer/${id}`)
     .then((response) => {
-      // Update state after thumbs up
+      // Update state after removing beer
       this.componentWillMount()
     })
   }
@@ -75,7 +75,7 @@ class BeerList extends Component {
   render() {
     if (!this.state.beers) return <p>Loading...</p>
 
-    var beers = _.map(this.state.beers, (beers, id, likes) => {
+    const beers = _.map(this.state.beers, (beers, id, likes) => {
       id = beers.id
       likes = beers.likes
       return <ul key={id}>
