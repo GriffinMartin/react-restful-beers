@@ -35,6 +35,8 @@ class BeerList extends Component {
     // Clean form inputs
     this.refs.beer_name.value = ""
     this.refs.beer_likes.value = ""
+    } else {
+      alert("Please fill in the required forms")
     }
   }
 
@@ -99,7 +101,7 @@ class BeerList extends Component {
               <label htmlFor="beerLikes">Likes:</label>
               <input ref='beer_likes' type='text' className="form-control" value={this.state.beer_likes} />
               
-              <button type="submit" className="btn btn-primary" onClick={this.addBeer.bind(this)}>Add Beer</button>
+              <button type="button" className="btn btn-primary" onClick={this.addBeer.bind(this)}>Add Beer</button>
             </form>
           </div>
         </div>
