@@ -22,7 +22,7 @@ class BeerList extends Component {
     })
   }
 
-  addBeer = (e) => {
+  addBeer = () => {
     const beer_name = this.refs.beer_name.value
     const beer_likes = this.refs.beer_likes.value
     // Prevent default entry
@@ -72,7 +72,7 @@ class BeerList extends Component {
     })
   }
 
-  render() {
+  render = () => {
     if (!this.state.beers) return <p>Loading...</p>
 
     const beers = _.map(this.state.beers, (beers, id, likes) => {
