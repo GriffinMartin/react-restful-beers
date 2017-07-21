@@ -1,3 +1,12 @@
-.btn-success,.btn-warning,.btn-danger {
+.label {
+  margin: 5px;
+}
+.badge {
+  margin: 5px;
+}
+.beer-input, .likes-input {
+  margin: 5px;
+}
+button.add-beer {
   margin: 5px;
 }

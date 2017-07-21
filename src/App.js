@@ -9,15 +9,19 @@ class BeerList extends Component {
   constructor() {
     super()
     this.state = {}
+    // Set api url as variable
+    this.url = "http://beer.fluentcloud.com/v1/beer/"
   }
 
   componentWillMount = () => {
-    // Set api url as variable
-    const url = "http://beer.fluentcloud.com/v1/beer/"
-    // Establish connection to api
-    axios.get(url).then((response) => {
+    this.getBeers()
+  }
+
+  getBeers = () => {
+    // Retreive data from api
+    axios.get(this.url).then((response) => {
       this.setState({
-        beers: response.data,
+        beers: response.data
       })
     })
   }
@@ -27,14 +31,14 @@ class BeerList extends Component {
     const beer_likes = this.refs.beer_likes.value
     // Prevent default entry
     if (beer_name && beer_likes) {
-      axios.post("http://beer.fluentcloud.com/v1/beer/", { name: beer_name, likes : beer_likes })
+      axios.post(this.url, { name: beer_name, likes : beer_likes })
       .then((response) => {
         // Update state after post
-        this.componentWillMount()
+        this.getBeers()
       })
-    // Clean form inputs
-    this.refs.beer_name.value = ""
-    this.refs.beer_likes.value = ""
+      // Clean form inputs
+      this.refs.beer_name.value = ""
+      this.refs.beer_likes.value = ""
     } else {
       alert("Please fill in the required forms")
     }
@@ -43,10 +47,10 @@ class BeerList extends Component {
   thumbsUp = (id, likes) => {
     // Incriment likes +1
     likes = likes+1
-    axios.put(`http://beer.fluentcloud.com/v1/beer/${id}`, { likes })
+    axios.put(this.url+`${id}`, { likes })
     .then((response) => {
       // Update state after thumbs up
-      this.componentWillMount()
+      this.getBeers()
     })
   }
 
@@ -57,18 +61,18 @@ class BeerList extends Component {
     } else {
       alert("You cannot downvote any further!")
     }
-    axios.put(`http://beer.fluentcloud.com/v1/beer/${id}`, { likes })
+    axios.put(this.url+`${id}`, { likes })
     .then((response) => {
       // Update state after thumbs down
-      this.componentWillMount()
+      this.getBeers()
     })
   }
 
   removeBeer = (id) => {
-    axios.delete(`http://beer.fluentcloud.com/v1/beer/${id}`)
+    axios.delete(this.url+`${id}`)
     .then((response) => {
       // Update state after removing beer
-      this.componentWillMount()
+      this.getBeers()
     })
   }
 
@@ -78,12 +82,14 @@ class BeerList extends Component {
     const beers = _.map(this.state.beers, (beers, id, likes) => {
       id = beers.id
       likes = beers.likes
-      return <ul key={id}>
-              {beers.name} ~~~ Likes: {beers.likes} 
-              <button type="button" className="btn btn-success" onClick={this.thumbsUp.bind(this, id, likes)}>Thumbs Up!</button> 
-              <button type="button" className="btn btn-warning" onClick={this.thumbsDown.bind(this, id, likes)}>Thumbs Down!</button>
-              <button type="button" className="btn btn-danger" onClick={this.removeBeer.bind(this, id)}>Remove!</button>
-            </ul>
+      return (
+      <ul key={id}>
+        <span>{beers.name}</span><span className="badge">{beers.likes}</span>
+        <button type="button" className="label label-success" onClick={this.thumbsUp.bind(this, id, likes)}>Thumbs Up!</button> 
+        <button type="button" className="label label-warning" onClick={this.thumbsDown.bind(this, id, likes)}>Thumbs Down!</button>
+        <button type="button" className="label label-danger" onClick={this.removeBeer.bind(this, id)}>Remove!</button>
+      </ul>
+      )
     })
     return (
       <div className="container">
@@ -96,12 +102,11 @@ class BeerList extends Component {
           </div>
           <div className="panel-body">
             <form className="form-inline">
-              <label htmlFor="beerName">Beer:</label>
+              <label htmlFor="beerName" className="beer-input">Beer:</label>
               <input ref='beer_name' type='text' className="form-control" value={this.state.beer_name} />
-              <label htmlFor="beerLikes">Likes:</label>
+              <label htmlFor="beerLikes" className="likes-input">Likes:</label>
               <input ref='beer_likes' type='number' className="form-control" value={this.state.beer_likes} />
-              
-              <button type="button" className="btn btn-primary" onClick={this.addBeer.bind(this)}>Add Beer</button>
+              <button type="button" className="btn btn-primary add-beer" onClick={this.addBeer.bind(this)}>Add Beer</button>
             </form>
           </div>
         </div>
