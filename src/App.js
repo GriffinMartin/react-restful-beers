@@ -85,7 +85,7 @@ class BeerList extends Component {
       return (
       <ul key={id}>
         <div className="row">
-          <div className="col-sm-4">
+          <div className="col-sm-6">
             <span className="badge">{beers.likes}</span>
             <span>{beers.name}</span>
           </div>
@@ -100,10 +100,10 @@ class BeerList extends Component {
     })
     return (
       <div className="container">
-        <div className="page-header">
+        <div className="page-header shrink-width">
           <h2>Griffin's Beers</h2>
         </div>
-        <div className="panel panel-default">
+        <div className="panel panel-default shrink-width">
           <div className="panel-heading">
             <h3>Add Beer!</h3>
           </div>
@@ -117,7 +117,7 @@ class BeerList extends Component {
             </form>
           </div>
         </div>
-        <div className="panel panel-default">
+        <div className="panel panel-default shrink-width">
           <div className="panel-heading">
             <h3>Beer List</h3>
           </div>

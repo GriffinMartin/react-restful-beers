@@ -11,3 +11,7 @@
 button.add-beer {
   margin: 5px;
 }
+.shrink-width {
+  margin: 20px auto;
+  width: 75%;
+}
