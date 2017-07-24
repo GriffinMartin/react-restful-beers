@@ -84,10 +84,17 @@ class BeerList extends Component {
       likes = beers.likes
       return (
       <ul key={id}>
-        <span>{beers.name}</span><span className="badge">{beers.likes}</span>
-        <button type="button" className="label label-success" onClick={this.thumbsUp.bind(this, id, likes)}>Thumbs Up!</button> 
-        <button type="button" className="label label-warning" onClick={this.thumbsDown.bind(this, id, likes)}>Thumbs Down!</button>
-        <button type="button" className="label label-danger" onClick={this.removeBeer.bind(this, id)}>Remove!</button>
+        <div className="row">
+          <div className="col-sm-4">
+            <span>{beers.name}</span>
+          </div>
+          <div className="col-sm-8">
+            <span className="badge">{beers.likes}</span>
+            <button type="button" className="label label-success" onClick={this.thumbsUp.bind(this, id, likes)}>Thumbs Up!</button> 
+            <button type="button" className="label label-warning" onClick={this.thumbsDown.bind(this, id, likes)}>Thumbs Down!</button>
+            <button type="button" className="label label-danger" onClick={this.removeBeer.bind(this, id)}>Remove!</button>
+          </div>
+        </div>
       </ul>
       )
     })
@@ -115,7 +122,7 @@ class BeerList extends Component {
             <h3>Beer List</h3>
           </div>
           <div className="panel-body">
-            <ul>{beers}</ul>
+            {beers}
           </div>
         </div>
       </div>
