@@ -3,6 +3,7 @@
 }
 .badge {
   margin: 5px;
+  margin-right: 15px;
 }
 .beer-input, .likes-input {
   margin: 5px;

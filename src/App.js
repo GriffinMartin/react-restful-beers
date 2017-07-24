@@ -86,10 +86,10 @@ class BeerList extends Component {
       <ul key={id}>
         <div className="row">
           <div className="col-sm-4">
+            <span className="badge">{beers.likes}</span>
             <span>{beers.name}</span>
           </div>
-          <div className="col-sm-8">
-            <span className="badge">{beers.likes}</span>
+          <div className="col-sm-6">
             <button type="button" className="label label-success" onClick={this.thumbsUp.bind(this, id, likes)}>Thumbs Up!</button> 
             <button type="button" className="label label-warning" onClick={this.thumbsDown.bind(this, id, likes)}>Thumbs Down!</button>
             <button type="button" className="label label-danger" onClick={this.removeBeer.bind(this, id)}>Remove!</button>
