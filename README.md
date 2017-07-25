@@ -12,6 +12,8 @@ yarn install
 yarn start
 
 ```
+Note: To interact with api this Chrome plugin is required: [Moesif Origin & CORS Changer](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc).
+
 [Live Demo](http://restful-react-beers.surge.sh/).
 
 Made by [Griffin Martin](https://griffinmartin.me).
