@@ -29,8 +29,8 @@ class BeerList extends Component {
   addBeer = () => {
     const beer_name = this.refs.beer_name.value
     const beer_likes = this.refs.beer_likes.value
-    // Prevent default entry
-    if (beer_name && beer_likes) {
+    // Prevent default and negative entry
+    if (beer_name && beer_likes && beer_likes >=0) {
       axios.post(this.url, { name: beer_name, likes : beer_likes })
       .then((response) => {
         // Update state after post
@@ -39,7 +39,11 @@ class BeerList extends Component {
       // Clean form inputs
       this.refs.beer_name.value = ""
       this.refs.beer_likes.value = ""
+      // Prevent input of negative likes
+    } else if (beer_likes <0) {
+      alert("Please enter a number >= to 0")
     } else {
+      // Preven incomplete or empty input
       alert("Please fill in the required forms")
     }
   }
