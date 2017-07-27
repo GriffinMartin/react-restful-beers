@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios                from 'axios'
 import _                    from 'lodash'
 
-import './App.css';
+import HeaderPanel          from './components/header_panel'
+import SubmitBeer           from './components/submit_beer'
+
+import './App.css'
 
 class BeerList extends Component {
 
@@ -24,28 +27,6 @@ class BeerList extends Component {
         beers: response.data
       })
     })
-  }
-
-  addBeer = () => {
-    const beer_name = this.refs.beer_name.value
-    const beer_likes = this.refs.beer_likes.value
-    // Prevent default and negative entry
-    if (beer_name && beer_likes && beer_likes >=0) {
-      axios.post(this.url, { name: beer_name, likes : beer_likes })
-      .then((response) => {
-        // Update state after post
-        this.getBeers()
-      })
-      // Clean form inputs
-      this.refs.beer_name.value = ""
-      this.refs.beer_likes.value = ""
-      // Prevent input of negative likes
-    } else if (beer_likes <0) {
-      alert("Please enter a number >= to 0")
-    } else {
-      // Preven incomplete or empty input
-      alert("Please fill in the required forms")
-    }
   }
 
   thumbsUp = (id, likes) => {
@@ -104,23 +85,8 @@ class BeerList extends Component {
     })
     return (
       <div className="container">
-        <div className="page-header shrink-width">
-          <h2>Griffin's Beers</h2>
-        </div>
-        <div className="panel panel-default shrink-width">
-          <div className="panel-heading">
-            <h3>Add Beer!</h3>
-          </div>
-          <div className="panel-body">
-            <form className="form-inline">
-              <label htmlFor="beerName" className="beer-input">Beer:</label>
-              <input ref='beer_name' type='text' className="form-control" value={this.state.beer_name} />
-              <label htmlFor="beerLikes" className="likes-input">Likes:</label>
-              <input ref='beer_likes' type='number' className="form-control" value={this.state.beer_likes} />
-              <button type="button" className="btn btn-primary add-beer" onClick={this.addBeer.bind(this)}>Add Beer</button>
-            </form>
-          </div>
-        </div>
+        <HeaderPanel />
+        <SubmitBeer componentWillMount={this.componentWillMount()} addBeer={this.getBeers()} />
         <div className="panel panel-default shrink-width">
           <div className="panel-heading">
             <h3>Beer List</h3>
