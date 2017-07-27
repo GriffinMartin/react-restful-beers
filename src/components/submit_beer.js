@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios                from 'axios'
 
 class SubmitBeer extends Component {
 
   constructor() {
     super()
-    this.state = {}
     // Set api url as variable
     this.url = "http://beer.fluentcloud.com/v1/beer/"
   }
