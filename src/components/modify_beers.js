@@ -33,8 +33,10 @@ export default class ModifyBeers extends Component {
       <ul className="list-group" key={id}>
         <li className="list-group-item">
           <div className="row">
-            <div className="col-sm-6">
+            <div className="col-sm-1">
               <span className="badge">{beers.likes}</span>
+            </div>
+            <div className="col-sm-5 beer-name">
               <span>{beers.name}</span>
             </div>
             <div className="col-sm-6">

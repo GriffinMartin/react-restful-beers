@@ -15,3 +15,6 @@ button.add-beer {
   margin: 20px auto;
   width: 75%;
 }
+.beer-name {
+  padding-top: 4px;
+}
