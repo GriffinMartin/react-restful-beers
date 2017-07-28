@@ -4,16 +4,10 @@ import _                    from 'lodash'
 
 export default class ModifyBeers extends Component {
 
-  constructor() {
-    super()
-    // Set api url as variable
-    this.url = "http://beer.fluentcloud.com/v1/beer/"
-  }
-
   thumbsUp = (id, likes) => {
     // Incriment likes +1
     likes = likes+1
-    axios.put(this.url+`${id}`, { likes })
+    axios.put(this.props.apiUrl+`${id}`, { likes })
   }
 
   thumbsDown = (id, likes) => {
@@ -23,11 +17,11 @@ export default class ModifyBeers extends Component {
     } else {
       alert("You cannot downvote any further!")
     }
-    axios.put(this.url+`${id}`, { likes })
+    axios.put(this.props.apiUrl+`${id}`, { likes })
   }
 
   removeBeer = (id) => {
-    axios.delete(this.url+`${id}`)
+    axios.delete(this.props.apiUrl+`${id}`)
   }
 
 

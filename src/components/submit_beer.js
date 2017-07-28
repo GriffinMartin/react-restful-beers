@@ -3,18 +3,12 @@ import axios                from 'axios'
 
 class SubmitBeer extends Component {
 
-  constructor() {
-    super()
-    // Set api url as variable
-    this.url = "http://beer.fluentcloud.com/v1/beer/"
-  }
-
   addBeer = () => {
     const beer_name = this.refs.beer_name.value
     const beer_likes = this.refs.beer_likes.value
     // Prevent default and negative entry
     if (beer_name && beer_likes && beer_likes >=0) {
-      axios.post(this.url, { name: beer_name, likes : beer_likes })
+      axios.post(this.props.apiUrl, { name: beer_name, likes : beer_likes })
       
       // Clean form inputs
       this.refs.beer_name.value = ""

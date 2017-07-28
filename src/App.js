@@ -35,8 +35,8 @@ export default class BeerList extends Component {
     return (
       <div className="container">
         <HeaderPanel />
-        <SubmitBeer addBeer={this.getBeers()} />
-        <ModifyBeers propsName = {this.state.beers} />
+        <SubmitBeer apiUrl={this.url} addBeer={this.getBeers()} />
+        <ModifyBeers apiUrl={this.url} propsName={this.state.beers} />
       </div>
     )
   }
