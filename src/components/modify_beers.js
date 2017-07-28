@@ -30,18 +30,20 @@ export default class ModifyBeers extends Component {
       id = beers.id
       likes = beers.likes
       return (
-      <ul key={id}>
-        <div className="row">
-          <div className="col-sm-6">
-            <span className="badge">{beers.likes}</span>
-            <span>{beers.name}</span>
+      <ul className="list-group" key={id}>
+        <li className="list-group-item">
+          <div className="row">
+            <div className="col-sm-6">
+              <span className="badge">{beers.likes}</span>
+              <span>{beers.name}</span>
+            </div>
+            <div className="col-sm-6">
+              <button type="button" className="label label-success" onClick={this.thumbsUp.bind(this, id, likes)}>Thumbs Up!</button> 
+              <button type="button" className="label label-warning" onClick={this.thumbsDown.bind(this, id, likes)}>Thumbs Down!</button>
+              <button type="button" className="label label-danger" onClick={this.removeBeer.bind(this, id)}>Remove!</button>
+            </div>
           </div>
-          <div className="col-sm-6">
-            <button type="button" className="label label-success" onClick={this.thumbsUp.bind(this, id, likes)}>Thumbs Up!</button> 
-            <button type="button" className="label label-warning" onClick={this.thumbsDown.bind(this, id, likes)}>Thumbs Down!</button>
-            <button type="button" className="label label-danger" onClick={this.removeBeer.bind(this, id)}>Remove!</button>
-          </div>
-        </div>
+        </li>
       </ul>
       )
     })
