@@ -30,8 +30,13 @@ export default class BeerList extends Component {
   }
 
   render = () => {
-    if (!this.state.beers) return <p>Loading...</p>
-
+    if (!this.state.beers) 
+      return (
+        <div>
+          <p>Make sure you have installed and enabled this Chrome extension:</p>
+          <a href="https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc">Moesif Origin & CORS Changer.</a>
+        </div>
+        )
     return (
       <div className="container">
         <HeaderPanel />
